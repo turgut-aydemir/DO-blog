@@ -30,10 +30,10 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan
-        working-directory: terraform
+        working-directory: /terraform
 
       - name: Terraform Apply
         id: apply
         run: terraform apply -auto-approve
         env:
-          TF_VAR_ecr_repository_url: ${{ secrets.ECR_REPOSITORY_URL }}
+          TF_VAR_ecr_repository_url: 245154219216.dkr.ecr.us-east-1.amazonaws.com/turgut-ecr-repo
