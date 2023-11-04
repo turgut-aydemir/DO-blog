@@ -24,13 +24,16 @@ jobs:
           aws-region: us-east-1
 
       - name: Terraform Init
+        id: init
         run: terraform init
 
       - name: Terraform Plan
+        id: plan
         run: terraform plan
+        working-directory: blog/terraform
 
       - name: Terraform Apply
+        id: apply
         run: terraform apply -auto-approve
-
-      - name: Cleanup
-        run: terraform destroy -auto-approve
+        env:
+          TF_VAR_ecr_repository_url: ${{ secrets.ECR_REPOSITORY_URL }}
