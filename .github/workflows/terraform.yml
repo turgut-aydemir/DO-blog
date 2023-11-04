@@ -27,7 +27,7 @@ jobs:
         id: init
         run: terraform init
         working-directory: terraform
-        
+
       - name: Terraform Plan
         id: plan
         run: terraform plan
@@ -36,5 +36,6 @@ jobs:
       - name: Terraform Apply
         id: apply
         run: terraform apply -auto-approve
+        working-directory: terraform
         env:
           TF_VAR_ecr_repository_url: 245154219216.dkr.ecr.us-east-1.amazonaws.com/turgut-ecr-repo
